@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Locker_KIOSK.Views.SelectCarrier"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Locker_KIOSK.Views"
+             mc:Ignorable="d" 
+             >
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,41,0,0">
+            <TextBlock Text="Select the carrier shown on your parcel label" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,61"  Foreground="#217BC0"/>
+            <ItemsControl ItemsSource="{Binding Carriers}"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Top"
+              BorderThickness="0"
+              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"
+                       HorizontalAlignment="Center"
+                       Width="651" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Margin="20"
+                    Height="177"
+                    Width="177"
+                    BorderThickness="2"     
+                    BorderBrush="LightGray"
+                    Cursor="Hand"
+                    Command="{Binding DataContext.OOHNextCommand,RelativeSource={RelativeSource AncestorType=ItemsControl}}"        
+                    CommandParameter="{Binding}"
+                    Style="{StaticResource LogoButtonStyle}">
+                            <Image Source="{Binding LogoPath}"
+                       Height="177"
+                       Width="170"
+                       Stretch="Uniform"/>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

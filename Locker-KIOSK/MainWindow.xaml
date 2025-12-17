@@ -1,0 +1,50 @@
+﻿<Window x:Class="Locker_KIOSK.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Locker_KIOSK"
+        xmlns:vm="clr-namespace:Locker_KIOSK.ViewModels"
+        xmlns:converters="clr-namespace:Locker_KIOSK.Converters"
+        xmlns:screens="clr-namespace:Locker_KIOSK.Views"
+        xmlns:OTPViews="clr-namespace:Locker_KIOSK.Views.OtpViews"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStyle="None"   
+        WindowState="Maximized"
+        
+        Title="MainWindow" >
+    <Window.DataContext>
+        <vm:MainViewModel/> 
+    </Window.DataContext>
+    <Window.Resources> 
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <DataTemplate DataType="{x:Type vm:HomeViewModel}">
+            <screens:HomeScreen/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SelectCustomerViewModel}">
+            <screens:SelectCustomer/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:SelectCarrierViewModel}">
+            <screens:SelectCarrier/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RecipientsViewModel}">
+            <OTPViews:RecipientsOOH/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="224"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Border Style="{StaticResource GradientBorderStyle}">
+                <Image Source="/Images/OODPOD.png" Stretch="Uniform" Height="160" Width="160"/>
+            </Border>
+            <Button HorizontalAlignment="Left" Style="{StaticResource RoundButtonStyle}" BorderThickness="0" Background="Transparent" Command="{Binding BackBtnCommand}"  Visibility="{Binding IsOnDropOffScreen, Converter={StaticResource BoolToVisibilityConverter}}"   Height="72" Width="72" Margin="40,0,0,0">
+                <Image Source="/Images/Back.png" />
+            </Button>
+        </Grid>
+        <ContentControl Content="{Binding CurrentScreen}" Grid.Row="1"/>
+    </Grid>
+</Window>
