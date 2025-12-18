@@ -18,7 +18,7 @@
             <StackPanel Orientation="Horizontal" Grid.Row="1">
 
                 <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp1" />
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp2" />
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1"  x:Name="otp2" />
                 <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp3" />
                 <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp4" />
                 
@@ -53,7 +53,7 @@
                 </Grid.RowDefinitions>
                 
                     <StackPanel Orientation="Horizontal" >
-                        <Button Style="{StaticResource KeypadButtonStyle}" Content="1" Click="Key_Click"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="1" Click="Key_Click"/>
                     <Button Style="{StaticResource KeypadButtonStyle}" Content="2" Click="Key_Click"/>
                     <Button Style="{StaticResource KeypadButtonStyle}" Content="3" Click="Key_Click"/>
                     </StackPanel>
@@ -73,7 +73,7 @@
 
                 </StackPanel>
 
-                <Button Style="{StaticResource RoundedButton}" Content="Confirm" Grid.Row="5" Margin="0,10,0,0"/>
+                <Button Style="{StaticResource RoundedButton}" Content="Confirm" Grid.Row="5" Margin="0,10,0,0" Command="{Binding ConfirmNextCommand}"/>
             </Grid>
         </Grid>
     </Grid>

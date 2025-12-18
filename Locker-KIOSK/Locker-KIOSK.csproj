@@ -21,6 +21,7 @@
     <None Remove="Images\GLS_Logo.png" />
     <None Remove="Images\OODPOD.png" />
     <None Remove="Images\PickUp.png" />
+    <None Remove="Images\ScanBarcode.png" />
     <None Remove="Images\United_Parcel_Service.png" />
   </ItemGroup>
 
@@ -56,6 +57,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\PickUp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\ScanBarcode.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\United_Parcel_Service.png">

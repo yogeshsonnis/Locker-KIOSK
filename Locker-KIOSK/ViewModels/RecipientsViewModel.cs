@@ -14,8 +14,8 @@ namespace Locker_KIOSK.ViewModels
         public RecipientsViewModel(MainViewModel mainVM)
         {
             _mainVM = mainVM;
-            
+            ConfirmNextCommand = new RelayCommand(_ => _mainVM.NavigateToOOHPODScan());
         }
-        
+        public ICommand ConfirmNextCommand { get; }
     }
 }

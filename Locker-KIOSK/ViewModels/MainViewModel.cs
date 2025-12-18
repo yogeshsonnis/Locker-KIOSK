@@ -1,4 +1,5 @@
 ﻿using Locker_KIOSK.Model;
+using Locker_KIOSK.Views.ScanBarcodeViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +17,20 @@ namespace Locker_KIOSK.ViewModels
             SelectCustomerVM = new SelectCustomerViewModel(this);
             SelectCarrierVM = new SelectCarrierViewModel(this);
             RecipientsVM = new RecipientsViewModel(this);
+            OOHPODScanVM = new OOHPODScanViewModel(this);
             CurrentScreen = HomeVM;
             BackBtnCommand = new RelayCommand(_ => NavigateBack());
         }
         public ICommand BackBtnCommand { get; }
-        public bool IsOnDropOffScreen => CurrentScreen == SelectCustomerVM || CurrentScreen == SelectCarrierVM || CurrentScreen == RecipientsVM;
+        public bool IsOnDropOffScreen => CurrentScreen == SelectCustomerVM || CurrentScreen == SelectCarrierVM || CurrentScreen == RecipientsVM || CurrentScreen == OOHPODScanVM;
 
         public HomeViewModel HomeVM { get; }
         public SelectCustomerViewModel SelectCustomerVM { get; }
         public SelectCarrierViewModel SelectCarrierVM { get; }
 
         public RecipientsViewModel RecipientsVM { get; }
+
+        public OOHPODScanViewModel OOHPODScanVM { get; }
 
         private ViewModelBase _currentScreen;
         public ViewModelBase CurrentScreen
@@ -49,6 +53,10 @@ namespace Locker_KIOSK.ViewModels
             else if (CurrentScreen == RecipientsVM)
             {
                 CurrentScreen = SelectCarrierVM;
+            }
+            else if (CurrentScreen == OOHPODScanVM)
+            {
+                CurrentScreen = RecipientsVM;
             }
             else
             {
@@ -77,6 +85,10 @@ namespace Locker_KIOSK.ViewModels
                 }
                 
             }
+        }
+        public void NavigateToOOHPODScan()
+        {
+            CurrentScreen = OOHPODScanVM;
         }
     }
 }
