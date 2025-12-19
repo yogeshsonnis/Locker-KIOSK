@@ -18,6 +18,7 @@
     <None Remove="Images\DHL_Emblem.png" />
     <None Remove="Images\DPD_Emblem.png" />
     <None Remove="Images\DropOff.png" />
+    <None Remove="Images\Error.png" />
     <None Remove="Images\GLS_Logo.png" />
     <None Remove="Images\OODPOD.png" />
     <None Remove="Images\PickUp.png" />
@@ -50,6 +51,9 @@
     <Resource Include="Images\DropOff.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Images\Error.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\GLS_Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

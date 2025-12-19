@@ -58,7 +58,9 @@ namespace Locker_KIOSK.ViewModels
             }
             else if (CurrentScreen == OOHPODScanVM)
             {
-                CurrentScreen = RecipientsVM;
+                RecipientsVM.Reset();
+                CurrentScreen =  RecipientsVM;
+                
             }
             else if (CurrentScreen == EnterBarcodeVM)
             {
@@ -84,12 +86,10 @@ namespace Locker_KIOSK.ViewModels
         {
             if(o is Carrier carrier)
             {
-                if(carrier.Name == "OOHPOD")
+                if (carrier.Name == "OOHPOD")
                 {
                     CurrentScreen = RecipientsVM;
-                    
-                }
-                
+                }          
             }
         }
         public void NavigateToOOHPODScan()
@@ -100,5 +100,8 @@ namespace Locker_KIOSK.ViewModels
         {
             CurrentScreen = EnterBarcodeVM;
         }
+       
+
+
     }
 }
