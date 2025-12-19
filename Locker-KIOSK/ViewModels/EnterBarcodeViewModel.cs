@@ -7,15 +7,15 @@ using System.Windows.Input;
 
 namespace Locker_KIOSK.ViewModels
 {
-    public class OOHPODScanViewModel : ViewModelBase
+   public class EnterBarcodeViewModel : ViewModelBase
     {
         private readonly MainViewModel _mainVM;
 
-        public OOHPODScanViewModel(MainViewModel mainVM)
+        public EnterBarcodeViewModel(MainViewModel mainVM)
         {
             _mainVM = mainVM;
-            EnterManualNextCommand = new RelayCommand(_ => _mainVM.NavigateEnterBarcode());
+           
         }
-        public ICommand EnterManualNextCommand { get; }
+        
     }
 }

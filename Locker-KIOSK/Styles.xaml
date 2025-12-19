@@ -321,11 +321,11 @@ Data="M538.708,1151.28 C538.314,1150.89 537.676,1150.89 537.281,1151.28 L534.981
         <Setter Property="Padding" Value="10"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontWeight" Value="Medium"/>
-        <Setter Property="Height" Value="55"/>
-        <Setter Property="Width" Value="600"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="650"/>
         <Setter Property="Background" Value="#F2F8FF"/>
         <Setter Property="BorderBrush" Value="#B7C3D0"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
@@ -361,7 +361,8 @@ Data="M538.708,1151.28 C538.314,1150.89 537.676,1150.89 537.281,1151.28 L534.981
                     <Border Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="6">
+                    CornerRadius="8">
+                        
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>

@@ -29,12 +29,16 @@
         <DataTemplate DataType="{x:Type vm:SelectCarrierViewModel}">
             <screens:SelectCarrier/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EnterBarcodeViewModel}">
+            <screens:EnterBarcode/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type vm:RecipientsViewModel}">
             <OTPViews:RecipientsOOH/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:OOHPODScanViewModel}">
             <ScanBarcodeViews:OOHPODScan/>
         </DataTemplate>
+        
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

@@ -38,11 +38,11 @@ namespace Locker_KIOSK.Views.OtpViews
             };
 
             foreach (var box in otpBoxes)
+
             {
                 if (string.IsNullOrEmpty(box.Text))
                 {
                     box.Text = key;
-                    box.Focus();
                     break;
                 }
             }

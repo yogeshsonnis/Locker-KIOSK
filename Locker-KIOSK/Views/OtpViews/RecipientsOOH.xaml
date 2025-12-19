@@ -7,11 +7,14 @@
              mc:Ignorable="d" 
              >
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
+        
         <TextBlock Text="Enter recipient's OOH ID" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#217BC0" Margin="0,41,0,0"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
             <TextBlock Text="OOH" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" Margin="0,0,10,0"/>
@@ -38,7 +41,7 @@
             </Grid.ColumnDefinitions>
             <Border Style="{StaticResource InfoCardBorderStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="70">
                 <StackPanel HorizontalAlignment="Center" >
-                    <TextBlock Text="Check address label" FontSize="23" Foreground="#555" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                    <TextBlock Text="Check address label" FontSize="23" Foreground="#555" HorizontalAlignment="Center" />
                     <TextBlock Text="OOH **** ****" FontSize="17" FontWeight="Bold" Foreground="#1E88E5" HorizontalAlignment="Center"/>
                     <Image Source="/Images/Box.png" Height="170" Stretch="Uniform"/>
                 </StackPanel>
