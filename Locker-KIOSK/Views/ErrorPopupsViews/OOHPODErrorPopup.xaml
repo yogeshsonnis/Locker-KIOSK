@@ -18,7 +18,7 @@
                 </Grid.RowDefinitions>
 
                 <Image Height="88" Source="/Images/Error.png" Stretch="Fill" Width="88" Margin="0,64,0,0"/>
-                <TextBlock Text="OOHPod Barcode not recognised." Grid.Row="1" FontSize="32" FontWeight="Bold" Foreground="#564B51" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,53,0,82"/>
+                <TextBlock Text="Sorry, OOH ID not found, Please try again." Grid.Row="1" FontSize="32" FontWeight="Bold" Foreground="#564B51" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,53,0,82"/>
                 <Button Style="{StaticResource ErrorRoundButton}" Grid.Row="2" Height="80" Width="338" Content="Back" Command="{Binding BackCommand}"/>
             </Grid>
         </Border>
