@@ -23,6 +23,13 @@ namespace Locker_KIOSK.Views.ConfirmPopupViews
         public OOHPODConfirmPopup()
         {
             InitializeComponent();
+        }    
+
+            private void ReEnterId_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
         }
+    
     }
 }

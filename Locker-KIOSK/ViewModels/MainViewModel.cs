@@ -1,4 +1,5 @@
 ﻿using Locker_KIOSK.Model;
+using Locker_KIOSK.Services;
 using Locker_KIOSK.Views.ScanBarcodeViews;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,10 @@ namespace Locker_KIOSK.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        public readonly ApiService _apiService; 
         public MainViewModel()
         {
+            _apiService = new ApiService();
             HomeVM = new HomeViewModel(this);
             SelectCustomerVM = new SelectCustomerViewModel(this);
             SelectCarrierVM = new SelectCarrierViewModel(this);
@@ -50,10 +53,10 @@ namespace Locker_KIOSK.ViewModels
             if (CurrentScreen == SelectCarrierVM)
             {
                 CurrentScreen = SelectCustomerVM;
-
             }
             else if (CurrentScreen == RecipientsVM)
             {
+                RecipientsVM.Reset();
                 CurrentScreen = SelectCarrierVM;
             }
             else if (CurrentScreen == OOHPODScanVM)

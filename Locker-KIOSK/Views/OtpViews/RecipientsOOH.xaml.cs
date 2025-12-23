@@ -41,6 +41,8 @@ namespace Locker_KIOSK.Views.OtpViews
                 }
             }
         }
+
+        
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             TextBox[] otpBoxes =

@@ -1,4 +1,7 @@
-﻿using System.Windows.Input;
+﻿using Locker_KIOSK.Model;
+using Locker_KIOSK.Services;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Locker_KIOSK.ViewModels
 {
@@ -6,23 +9,34 @@ namespace Locker_KIOSK.ViewModels
     {
         private readonly MainViewModel _mainVM;
 
-        public string TempId = "12345678";
-
         private string _oohId;
 
         public string OOHId
         {
-            get { return _oohId; }
+            get => _oohId;
             set
             {
-                _oohId = value;
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    _oohId = "OOH";
+                }
+                else if (!value.StartsWith("OOH"))
+                {
+                    _oohId = "OOH" + value.Replace("OOH", "");
+                }
+                else
+                {
+                    _oohId = value;
+                }
+
                 OnPropertyChanged();
             }
         }
 
+
         private bool _isErrorPopupVisible;
 
-        public bool IsErrorPopupVisible  
+        public bool IsErrorPopupVisible
         {
             get { return _isErrorPopupVisible; }
             set
@@ -47,7 +61,7 @@ namespace Locker_KIOSK.ViewModels
         {
             _mainVM = mainVM;
 
-            ConfirmCommand = new RelayCommand(_ => Confirm());
+            ConfirmCommand = new RelayCommand(async _ => await Confirm());
             ConfirmNextCommand = new RelayCommand(_ => mainVM.NavigateToOOHPODScan());
             BackCommand = new RelayCommand(_ => Back());
             ReEnterBackCommand = new RelayCommand(_ => ReEnterBack());
@@ -60,20 +74,22 @@ namespace Locker_KIOSK.ViewModels
 
         private void Back()
         {
-            IsErrorPopupVisible   = false;
+            IsErrorPopupVisible = false;
         }
 
-        private void Confirm()
+        private async Task Confirm()
         {
-            if (TempId == OOHId)
+            //"OOH45678976"
+            var user = await _mainVM._apiService.UserExistsAsync<UserResponse>(OOHId);
+            if (user != null)
             {
                 IsConfirmPopupVisible = true;
-                IsErrorPopupVisible   = false;
+                IsErrorPopupVisible = false;
             }
             else
             {
                 IsConfirmPopupVisible = false;
-                IsErrorPopupVisible   = true;
+                IsErrorPopupVisible = true;
             }
 
         }
@@ -81,7 +97,7 @@ namespace Locker_KIOSK.ViewModels
         {
             OOHId = string.Empty;
             IsConfirmPopupVisible = false;
-            IsErrorPopupVisible   = false;
+            IsErrorPopupVisible = false;
         }
 
         public ICommand ReEnterBackCommand { get; }

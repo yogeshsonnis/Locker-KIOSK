@@ -21,11 +21,11 @@
                 <TextBlock Text="Please confirm the following is correct:" FontSize="32" FontWeight="Bold" Foreground="#63ac39" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <TextBlock Text="OOH ID:" Grid.Row="1" FontSize="32" FontWeight="Bold" Foreground="#564b51" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="OOH "  FontSize="32" FontWeight="Bold" Foreground="#564b51" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <!--<TextBlock Text="OOH "  FontSize="32" FontWeight="Bold" Foreground="#564b51" VerticalAlignment="Center" HorizontalAlignment="Center" />-->
                     <TextBlock Text="{Binding OOHId}"  FontSize="32" FontWeight="Bold" Foreground="#564b51" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <Button Style="{StaticResource ManuallButton}" Height="80"  Content="Re-Enter ID" Margin="0,0,30,0" Command="{Binding ReEnterBackCommand}"/>
+                    <Button Style="{StaticResource ManuallButton}" Height="80"  Content="Re-Enter ID" Margin="0,0,30,0" Command="{Binding ReEnterBackCommand}"   />
                     <Button Style="{StaticResource ErrorRoundButton}"  Height="80" Width="338" Content="Confirm" Command="{Binding ConfirmNextCommand}"/>
                 </StackPanel>
             </Grid>

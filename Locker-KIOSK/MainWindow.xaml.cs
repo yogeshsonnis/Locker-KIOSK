@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Locker_KIOSK.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,7 @@ namespace Locker_KIOSK
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
     }
