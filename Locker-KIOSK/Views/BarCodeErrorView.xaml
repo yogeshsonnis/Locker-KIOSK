@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Locker_KIOSK.Views"
              mc:Ignorable="d" 
+              Background="{StaticResource HalfOpacityBrush}"
              >
     <Grid Width="1040" Height="552">
         <Border  Background="#F5F5F5" BorderBrush="#D32F2F" BorderThickness="2" CornerRadius="10">

@@ -8,6 +8,8 @@
              mc:Ignorable="d" 
              >
     <Grid>
+        
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -77,6 +79,7 @@ Data="M538.708,1151.28 C538.314,1150.89 537.676,1150.89 537.281,1151.28 L534.981
             </StackPanel>
         </StackPanel>
         <Button Style="{StaticResource RoundedButton}"  Grid.Row="2" Content="Confirm" Margin="0,25,0,0" Command="{Binding ConfirmCommand}"/>
+    </Grid>
         <Grid Grid.RowSpan="4">
             <Grid.Style>
                 <Style TargetType="Grid">

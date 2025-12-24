@@ -37,7 +37,13 @@ namespace Locker_KIOSK.ViewModels
         {
             _mainVM = mainVM;
             ConfirmCommand = new RelayCommand(async _ => await Confirm());
+            BackCommand = new RelayCommand(_ => Back());
 
+        }
+
+        private void Back()
+        {
+            IsErrorPopupVisible = false;
         }
 
         private string _barcode;
@@ -57,7 +63,8 @@ namespace Locker_KIOSK.ViewModels
             var parcel = new Parcel
             {
                 CarrierCode = "OOH",
-                TrackingNumber = "L2C002356101",
+                TrackingNumber = Barcode,
+                //TrackingNumber = "L2C002356101",
                 Actor = "Customer",
                 Action = "Pickup",
                 LocationCode = "OP00001",
@@ -83,5 +90,6 @@ namespace Locker_KIOSK.ViewModels
         }
 
         public ICommand ConfirmCommand { get; }
+        public ICommand BackCommand { get; }
     }
 }

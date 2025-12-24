@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Locker_KIOSK.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,12 +28,20 @@ namespace Locker_KIOSK.Views
         private void Key_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            BarCodeTextBox.Text += btn.Content.ToString();
+            var vm = DataContext as EnterBarcodeViewModel;
+            if (vm != null) { 
+            vm.Barcode += btn.Content.ToString();
+            }
+           // BarCodeTextBox.Text += btn.Content.ToString();
         }
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (BarCodeTextBox.Text.Length > 0)
-                BarCodeTextBox.Text = BarCodeTextBox.Text.Substring(0, BarCodeTextBox.Text.Length - 1);
+            var vm = DataContext as EnterBarcodeViewModel;
+            if (vm != null)
+            {
+                if (vm.Barcode.Length > 0)
+                    vm.Barcode = vm.Barcode.Substring(0, vm.Barcode.Length - 1);
+            }
         }
     }
 }
