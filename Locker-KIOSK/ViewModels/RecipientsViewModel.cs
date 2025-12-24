@@ -123,7 +123,7 @@ namespace Locker_KIOSK.ViewModels
             }
         }
 
-        public RecipientsViewModel( MainViewModel mainVM)
+        public RecipientsViewModel(MainViewModel mainVM)
         {
             _mainVM = mainVM;
             ConfirmCommand = new RelayCommand(async _ => await Confirm());
@@ -186,7 +186,7 @@ namespace Locker_KIOSK.ViewModels
             IsExecute = false;
             //"OOH45678976"
             var result = await _mainVM._apiService.UserExistsAsync(OOHId);
-            if (result.Success == true)
+            if (result.Success == true && result.Data != null)
             {
                 IsConfirmPopupVisible = true;
                 IsErrorPopupVisible = false;

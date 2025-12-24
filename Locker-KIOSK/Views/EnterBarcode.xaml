@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Locker_KIOSK.Views"
+             xmlns:ErrorPopup="clr-namespace:Locker_KIOSK.Views"
              mc:Ignorable="d" 
              >
     <Grid>
@@ -14,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,0,30">
             <TextBlock Text="Enter the digits under your barcode" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,42,0,20" Foreground="#3f79bb"/>
-            <TextBox x:Name="BarCodeTextBox" Style="{StaticResource RoundTextBoxStyle}" />
+            <TextBox x:Name="BarCodeTextBox" Style="{StaticResource RoundTextBoxStyle}" Text="{Binding Barcode}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" >
 
@@ -75,6 +76,24 @@ Data="M538.708,1151.28 C538.314,1150.89 537.676,1150.89 537.281,1151.28 L534.981
                 </Button>
             </StackPanel>
         </StackPanel>
-        <Button Style="{StaticResource RoundedButton}"  Grid.Row="2" Content="Confirm" Margin="0,25,0,0"/>
+        <Button Style="{StaticResource RoundedButton}"  Grid.Row="2" Content="Confirm" Margin="0,25,0,0" Command="{Binding ConfirmCommand}"/>
+        <Grid Grid.RowSpan="4">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsErrorPopupVisible  }" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsErrorPopupVisible  }" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <ErrorPopup:BarCodeErrorView  x:Name="errorpopup"/>
+
+        </Grid>
     </Grid>
 </UserControl>

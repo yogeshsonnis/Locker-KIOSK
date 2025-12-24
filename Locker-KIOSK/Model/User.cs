@@ -1,6 +1,6 @@
 ﻿namespace Locker_KIOSK.Model
 {
-   public class User
+    public class User
     {
         public int OohpodUserId { get; set; }
         public string OohpodId { get; set; } = "";
@@ -11,5 +11,12 @@
         public bool IsActive { get; set; }
         public string Status { get; set; } = "";
 
+
+
+    }
+
+    public class UserResponse
+    {
+        public User? Data { get; set; }
     }
 }

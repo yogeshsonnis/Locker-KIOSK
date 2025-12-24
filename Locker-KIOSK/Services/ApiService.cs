@@ -1,13 +1,15 @@
 ﻿using Locker_KIOSK.Model;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Windows.Controls;
 
 namespace Locker_KIOSK.Services
 {
     public class ApiService
     {
         private readonly HttpClient _httpClient;
-      
+
         public ApiService(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -15,90 +17,46 @@ namespace Locker_KIOSK.Services
 
         public async Task<ApiResponse<User>> UserExistsAsync(string userId)
         {
-            var result = await GetAsync<User>(
-                $"user/exists/{userId}");
+            var response = await _httpClient.GetAsync($"user/exists/{userId}");
 
-            return result;
-        }
-        public async Task<ApiResponse<T>> GetAsync<T>(string endpoint)
-        {
-            var result = new ApiResponse<T>();
-
-            try
+            if (!response.IsSuccessStatusCode)
             {
-                var response = await _httpClient.GetAsync(endpoint);
-                var json = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    result.Success = false;
-                    result.Message = $"HTTP Error: {response.StatusCode}";
-                    return result;
-                }
-
-                var serverResponse =
-                    await response.Content.ReadFromJsonAsync<ApiResponse<T>>();
-
-                if (serverResponse.Data != null)
-                {
-                    return new ApiResponse<T>
-                    {
-                        Success = true,
-                        Message = "Success",
-                        Data = serverResponse.Data
-                    };
-                }
-
-                return new ApiResponse<T>
+                return new ApiResponse<User>
                 {
                     Success = false,
-                    Message = serverResponse?.Message ?? "No data returned"
+                    Message = response.ReasonPhrase
                 };
             }
-            catch (Exception ex)
+
+            var result = await response.Content.ReadFromJsonAsync<UserResponse>();
+
+            return new ApiResponse<User>
             {
-                return new ApiResponse<T>
-                {
-                    Success = false,
-                    Message = ex.Message
-                };
-            }
+                Success = true,
+                Data = result?.Data,
+                Message = response.ReasonPhrase
+            };
         }
 
-        public async Task<ApiResponse<TResponse>> PostAsync<TRequest, TResponse>(string endpoint, TRequest payload)
+        public async Task<ApiResponse<CarrierValidateResponse>?> IsParcelValidAsync(Parcel parcel)
         {
-            var result = new ApiResponse<TResponse>();
+            var response = await _httpClient.PostAsJsonAsync("parcel/validate", parcel);
 
-            try
+            if (!response.IsSuccessStatusCode)
             {
-                var response = await _httpClient.PostAsJsonAsync(endpoint, payload);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    result.Success = false;
-                    result.Message = $"HTTP Error: {response.StatusCode}";
-                    return result;
-                }
-
-                var apiResponse = await response.Content.ReadFromJsonAsync<ApiResponse<TResponse>>();
-
-                if (apiResponse != null)
-                    return apiResponse;
-
-                return new ApiResponse<TResponse>
+                return new ApiResponse<CarrierValidateResponse>
                 {
                     Success = false,
-                    Message = "No response data"
+                    Message = response.ReasonPhrase
                 };
             }
-            catch (Exception ex)
+            var result = await response.Content.ReadFromJsonAsync<CarrierValidateResponse>();
+            return new ApiResponse<CarrierValidateResponse>
             {
-                return new ApiResponse<TResponse>
-                {
-                    Success = false,
-                    Message = ex.Message
-                };
-            }
+                Success = true,
+                Data = result,
+                Message = response.ReasonPhrase
+            };
         }
 
 
