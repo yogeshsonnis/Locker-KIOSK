@@ -22,17 +22,17 @@
             <TextBlock Text="OOH" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" Margin="0,0,10,0"/>
             <StackPanel Orientation="Horizontal" Grid.Row="1">
 
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp1" />
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1"  x:Name="otp2" />
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp3" />
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp4" />
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp1" Text="{Binding Otp1}"/>
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1"  x:Name="otp2" Text="{Binding Otp2}"/>
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp3" Text="{Binding Otp3}"/>
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp4" Text="{Binding Otp4}"/>
 
                 <TextBlock Text="-" FontSize="36" VerticalAlignment="Center"  Foreground="#FF808080"/>
 
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp5" />
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp6" />
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp7" />
-                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp8" />
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp5" Text="{Binding Otp5}"/>
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp6" Text="{Binding Otp6}"/>
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp7" Text="{Binding Otp7}"/>
+                <TextBox Style="{StaticResource OTPTextBoxStyle}" MaxLength="1" x:Name="otp8" Text="{Binding Otp8}"/>
 
             </StackPanel>
         </StackPanel>
@@ -58,27 +58,27 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" >
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="1" Click="Key_Click"/>
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="2" Click="Key_Click"/>
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="3" Click="Key_Click"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="1" Command="{Binding KeyCommand}" CommandParameter="1"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="2" Command="{Binding KeyCommand}" CommandParameter="2"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="3" Command="{Binding KeyCommand}" CommandParameter="3"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="1">
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="4" Click="Key_Click"/>
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="5" Click="Key_Click"/>
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="6" Click="Key_Click"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="4" Command="{Binding KeyCommand}" CommandParameter="4"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="5" Command="{Binding KeyCommand}" CommandParameter="5"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="6" Command="{Binding KeyCommand}" CommandParameter="6"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="2">
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="7" Click="Key_Click"/>
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="8" Click="Key_Click"/>
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="9" Click="Key_Click"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="7" Command="{Binding KeyCommand}" CommandParameter="7"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="8" Command="{Binding KeyCommand}" CommandParameter="8"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="9"   Command="{Binding KeyCommand}" CommandParameter="9"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,6,0">
-                    <Button Style="{StaticResource KeypadButtonStyle}" Content="0" Margin="0,0,0,0" Click="Key_Click"/>
-                    <Button Style="{StaticResource DeleteButtonStyle}" Click="Back_Click"/>
+                    <Button Style="{StaticResource KeypadButtonStyle}" Content="0" Margin="0,0,0,0" Command="{Binding KeyCommand}" CommandParameter="0"/>
+                    <Button Style="{StaticResource DeleteButtonStyle}"  Command="{Binding DeleteIdCommand}"/>
 
                 </StackPanel>
 
-                <Button Style="{StaticResource RoundedButton}" Content="Confirm" Grid.Row="5" Margin="0,10,0,0" Command="{Binding ConfirmCommand}"/>
+                <Button IsEnabled="{Binding IsExecute}" Style="{StaticResource RoundedButton}" Content="Confirm" Grid.Row="5" Margin="0,10,0,0" Command="{Binding ConfirmCommand}"/>
             </Grid>
         </Grid>
         <Grid Grid.RowSpan="4">

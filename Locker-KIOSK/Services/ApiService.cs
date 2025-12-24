@@ -40,7 +40,7 @@ namespace Locker_KIOSK.Services
                 }
                 //   var json = await response.Content.ReadAsStringAsync();
                 return await response.Content.ReadFromJsonAsync<T>();
-            }
+            } 
             catch (Exception ex)
             {
                 throw new Exception(ex.Message, ex);
