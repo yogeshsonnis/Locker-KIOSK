@@ -1,4 +1,5 @@
 ﻿using Locker_KIOSK.Model;
+using Locker_KIOSK.Services;
 using System.Windows.Input;
 
 namespace Locker_KIOSK.ViewModels
@@ -122,10 +123,9 @@ namespace Locker_KIOSK.ViewModels
             }
         }
 
-        public RecipientsViewModel(MainViewModel mainVM)
+        public RecipientsViewModel( MainViewModel mainVM)
         {
             _mainVM = mainVM;
-
             ConfirmCommand = new RelayCommand(async _ => await Confirm());
             ConfirmNextCommand = new RelayCommand(_ => mainVM.NavigateToOOHPODScan());
             BackCommand = new RelayCommand(_ => Back());
@@ -185,8 +185,8 @@ namespace Locker_KIOSK.ViewModels
         {
             IsExecute = false;
             //"OOH45678976"
-            var user = await _mainVM._apiService.UserExistsAsync<UserResponse>(OOHId);
-            if (user != null)
+            var result = await _mainVM._apiService.UserExistsAsync(OOHId);
+            if (result.Success == true)
             {
                 IsConfirmPopupVisible = true;
                 IsErrorPopupVisible = false;

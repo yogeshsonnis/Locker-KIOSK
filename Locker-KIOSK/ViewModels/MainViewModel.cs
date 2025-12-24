@@ -1,21 +1,15 @@
 ﻿using Locker_KIOSK.Model;
 using Locker_KIOSK.Services;
-using Locker_KIOSK.Views.ScanBarcodeViews;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Locker_KIOSK.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public readonly ApiService _apiService; 
-        public MainViewModel()
+        public readonly ApiService _apiService;
+        public MainViewModel(ApiService apiService)
         {
-            _apiService = new ApiService();
+            _apiService = apiService;
             HomeVM = new HomeViewModel(this);
             SelectCustomerVM = new SelectCustomerViewModel(this);
             SelectCarrierVM = new SelectCarrierViewModel(this);
@@ -62,8 +56,8 @@ namespace Locker_KIOSK.ViewModels
             else if (CurrentScreen == OOHPODScanVM)
             {
                 RecipientsVM.Reset();
-                CurrentScreen =  RecipientsVM;
-                
+                CurrentScreen = RecipientsVM;
+
             }
             else if (CurrentScreen == EnterBarcodeVM)
             {
@@ -87,12 +81,12 @@ namespace Locker_KIOSK.ViewModels
 
         public void NavigateToRecipients(object? o)
         {
-            if(o is Carrier carrier)
+            if (o is Carrier carrier)
             {
                 if (carrier.Name == "OOHPOD")
                 {
                     CurrentScreen = RecipientsVM;
-                }          
+                }
             }
         }
         public void NavigateToOOHPODScan()
@@ -103,7 +97,7 @@ namespace Locker_KIOSK.ViewModels
         {
             CurrentScreen = EnterBarcodeVM;
         }
-       
+
 
 
     }

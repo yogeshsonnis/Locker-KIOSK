@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Locker_KIOSK.Model
+﻿namespace Locker_KIOSK.Model
 {
    public class User
     {
@@ -17,10 +11,5 @@ namespace Locker_KIOSK.Model
         public bool IsActive { get; set; }
         public string Status { get; set; } = "";
 
-    }
-
-    public class UserResponse
-    {
-        public User Data { get; set; } = new User();
     }
 }

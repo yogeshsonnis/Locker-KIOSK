@@ -15,9 +15,7 @@
         WindowState="Maximized"
         
         Title="MainWindow" >
-    <Window.DataContext>
-        <vm:MainViewModel/> 
-    </Window.DataContext>
+  
     <Window.Resources> 
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <DataTemplate DataType="{x:Type vm:HomeViewModel}">
