@@ -78,7 +78,7 @@ Data="M538.708,1151.28 C538.314,1150.89 537.676,1150.89 537.281,1151.28 L534.981
                 </Button>
             </StackPanel>
         </StackPanel>
-        <Button Style="{StaticResource RoundedButton}"  Grid.Row="2" Content="Confirm" Margin="0,25,0,0" Command="{Binding ConfirmCommand}"/>
+            <Button Style="{StaticResource RoundedButton}" IsEnabled="{Binding IsExecute}"  Grid.Row="2" Content="Confirm" Margin="0,25,0,0" Command="{Binding ConfirmCommand}"/>
     </Grid>
         <Grid Grid.RowSpan="4">
             <Grid.Style>

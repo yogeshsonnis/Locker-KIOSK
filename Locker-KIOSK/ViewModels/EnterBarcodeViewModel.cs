@@ -57,6 +57,13 @@ namespace Locker_KIOSK.ViewModels
                 OnPropertyChanged();
             }
         }
+        private bool _isExecute = true;
+
+        public bool IsExecute
+        {
+            get { return _isExecute; }
+            set { _isExecute = value; OnPropertyChanged(); }
+        }
 
         private async Task Confirm()
         {
@@ -71,7 +78,7 @@ namespace Locker_KIOSK.ViewModels
                 AccountCode = "test23"
 
             };
-            // IsExecute = false;
+            IsExecute = false;
 
             var result = await _mainVM._apiService.IsParcelValidAsync(parcel);
             if (result.Success == true && result != null)
@@ -85,7 +92,7 @@ namespace Locker_KIOSK.ViewModels
                 MessageBox.Show(result.Message);
                 IsErrorPopupVisible = true;
             }
-            //  IsExecute = true;
+             IsExecute = true;
 
         }
 
