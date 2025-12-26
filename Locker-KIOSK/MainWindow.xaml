@@ -9,6 +9,7 @@
         xmlns:screens="clr-namespace:Locker_KIOSK.Views"
         xmlns:OTPViews="clr-namespace:Locker_KIOSK.Views.OtpViews"
         xmlns:ScanBarcodeViews="clr-namespace:Locker_KIOSK.Views.ScanBarcodeViews"
+        xmlns:CompartmentsViews="clr-namespace:Locker_KIOSK.Views.Compartments"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStyle="None"   
@@ -36,7 +37,9 @@
         <DataTemplate DataType="{x:Type vm:OOHPODScanViewModel}">
             <ScanBarcodeViews:OOHPODScan/>
         </DataTemplate>
-        
+        <DataTemplate DataType="{x:Type vm:OOHPODCompartmentViewModel}">
+            <CompartmentsViews:OOHPODDropOffCompartment/>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>

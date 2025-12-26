@@ -36,9 +36,9 @@ namespace Locker_KIOSK.ViewModels
         public EnterBarcodeViewModel(MainViewModel mainVM)
         {
             _mainVM = mainVM;
-            ConfirmCommand = new RelayCommand(async _ => await Confirm());
+            ConfirmCommand = new RelayCommand(async _ => await _mainVM.NavigateToOOHPODCompartment());
             BackCommand = new RelayCommand(_ => Back());
-
+           
         }
 
         private void Back()
@@ -65,7 +65,7 @@ namespace Locker_KIOSK.ViewModels
             set { _isExecute = value; OnPropertyChanged(); }
         }
 
-        private async Task Confirm()
+        public async Task<bool> Confirm()
         {
             var parcel = new Parcel
             {
@@ -76,7 +76,7 @@ namespace Locker_KIOSK.ViewModels
                 Action = "Pickup",
                 LocationCode = "OP00001",
                 AccountCode = "test23"
-
+                
             };
             IsExecute = false;
 
@@ -93,8 +93,10 @@ namespace Locker_KIOSK.ViewModels
             }
              IsExecute = true;
 
-        }
+            return result.Success;
 
+        }
+       
         public ICommand ConfirmCommand { get; }
         public ICommand BackCommand { get; }
     }

@@ -16,11 +16,12 @@ namespace Locker_KIOSK.ViewModels
             RecipientsVM = new RecipientsViewModel(this);
             OOHPODScanVM = new OOHPODScanViewModel(this);
             EnterBarcodeVM = new EnterBarcodeViewModel(this);
+            OOHPODCompartmentVM = new OOHPODCompartmentViewModel(this);
             CurrentScreen = HomeVM;
             BackBtnCommand = new RelayCommand(_ => NavigateBack());
         }
         public ICommand BackBtnCommand { get; }
-        public bool IsOnDropOffScreen => CurrentScreen == SelectCustomerVM || CurrentScreen == SelectCarrierVM || CurrentScreen == RecipientsVM || CurrentScreen == OOHPODScanVM || CurrentScreen == EnterBarcodeVM;
+        public bool IsOnDropOffScreen => CurrentScreen == SelectCustomerVM || CurrentScreen == SelectCarrierVM || CurrentScreen == RecipientsVM || CurrentScreen == OOHPODScanVM || CurrentScreen == EnterBarcodeVM || CurrentScreen == OOHPODCompartmentVM;
 
         public HomeViewModel HomeVM { get; }
         public SelectCustomerViewModel SelectCustomerVM { get; }
@@ -30,6 +31,7 @@ namespace Locker_KIOSK.ViewModels
 
         public OOHPODScanViewModel OOHPODScanVM { get; }
         public EnterBarcodeViewModel EnterBarcodeVM { get; }
+        public OOHPODCompartmentViewModel OOHPODCompartmentVM { get; }
 
         private ViewModelBase _currentScreen;
         public ViewModelBase CurrentScreen
@@ -63,6 +65,10 @@ namespace Locker_KIOSK.ViewModels
             {
                 CurrentScreen = OOHPODScanVM;
             }
+            else if (CurrentScreen == OOHPODCompartmentVM)
+            {
+                CurrentScreen = EnterBarcodeVM;
+            }
             else
             {
                 CurrentScreen = HomeVM;
@@ -74,6 +80,7 @@ namespace Locker_KIOSK.ViewModels
         {
             CurrentScreen = SelectCustomerVM;
         }
+
         public void NavigateToCarrier()
         {
             CurrentScreen = SelectCarrierVM;
@@ -90,15 +97,22 @@ namespace Locker_KIOSK.ViewModels
             }
         }
         public void NavigateToOOHPODScan()
-        {
-            CurrentScreen = OOHPODScanVM;
+        {       
+               CurrentScreen = OOHPODScanVM;        
         }
         public void NavigateEnterBarcode()
         {
             CurrentScreen = EnterBarcodeVM;
         }
 
-
+        public async Task NavigateToOOHPODCompartment()
+        {
+          bool isContinue = await EnterBarcodeVM.Confirm();
+            if (isContinue) 
+            { 
+                CurrentScreen = OOHPODCompartmentVM;
+            }          
+        }
 
     }
 }
