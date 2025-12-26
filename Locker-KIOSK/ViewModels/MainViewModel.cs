@@ -1,5 +1,6 @@
 ﻿using Locker_KIOSK.Model;
 using Locker_KIOSK.Services;
+using Locker_KIOSK.Views;
 using System.Windows.Input;
 
 namespace Locker_KIOSK.ViewModels
@@ -63,10 +64,12 @@ namespace Locker_KIOSK.ViewModels
             }
             else if (CurrentScreen == EnterBarcodeVM)
             {
+                EnterBarcodeVM.Barcode = string.Empty;
                 CurrentScreen = OOHPODScanVM;
             }
             else if (CurrentScreen == OOHPODCompartmentVM)
             {
+                EnterBarcodeVM.Barcode = string.Empty;
                 CurrentScreen = EnterBarcodeVM;
             }
             else

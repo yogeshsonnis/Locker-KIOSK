@@ -43,6 +43,7 @@ namespace Locker_KIOSK.ViewModels
 
         private void Back()
         {
+          
             IsErrorPopupVisible = false;
         }
 
