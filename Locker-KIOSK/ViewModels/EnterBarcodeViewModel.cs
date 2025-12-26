@@ -83,13 +83,12 @@ namespace Locker_KIOSK.ViewModels
             var result = await _mainVM._apiService.IsParcelValidAsync(parcel);
             if (result.Success == true && result != null)
             {
-
-                MessageBox.Show(result.Message);
+                //MessageBox.Show(result.Message);
                 IsErrorPopupVisible = false;
             }
             else
             {
-                MessageBox.Show(result.Message);
+              
                 IsErrorPopupVisible = true;
             }
              IsExecute = true;

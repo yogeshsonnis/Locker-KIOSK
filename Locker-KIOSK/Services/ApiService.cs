@@ -38,7 +38,7 @@ namespace Locker_KIOSK.Services
             };
         }
 
-        public async Task<ApiResponse<CarrierValidateResponse>?> IsParcelValidAsync(Parcel parcel)
+        public async Task<ApiResponse<CarrierValidateResponse>> IsParcelValidAsync(Parcel parcel)
         {
             var response = await _httpClient.PostAsJsonAsync("parcel/validate", parcel);
 
@@ -51,11 +51,31 @@ namespace Locker_KIOSK.Services
                 };
             }
             var result = await response.Content.ReadFromJsonAsync<CarrierValidateResponse>();
+
+
+            if (result == null)
+            {
+                return new ApiResponse<CarrierValidateResponse>
+                {
+                    Success = false,
+                    Message = "Empty response from server"
+                };
+            }
+
+            if (result.Status.Equals("Failed", StringComparison.OrdinalIgnoreCase))
+            {
+                return new ApiResponse<CarrierValidateResponse>
+                {
+                    Success = false,
+                    Message = result.Message
+                };
+            }
+
             return new ApiResponse<CarrierValidateResponse>
             {
                 Success = true,
                 Data = result,
-                Message = response.ReasonPhrase
+                Message = result.Status
             };
         }
 

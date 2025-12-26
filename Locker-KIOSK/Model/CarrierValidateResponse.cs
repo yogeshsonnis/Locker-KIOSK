@@ -12,5 +12,6 @@ namespace Locker_KIOSK.Model
         public bool AllowParcel { get; set; }
         public string Carrier { get; set; } = "";
         public string TrackingNumber { get; set; } = "";
+        public string? Message { get; set; }   
     }
 }
